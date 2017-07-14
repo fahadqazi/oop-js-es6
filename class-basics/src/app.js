@@ -1,24 +1,26 @@
-//inheritance
-// gspEnabled is on base class so it can be: 
-// 1. inherited from base class `Vehicle`
-// 2. over ridden by definined in the var class
+// Methods with inheritance
+// Method in car overrides method in Vehicle
 class Vehicle{
-    constructor(){
-        this.gspEnabled = true;
+    start(){
+        console.log('starting vehicle....')
+    }
+    static getCompanyName(){
+        console.log('LockHeed Martin ...')
     }
 }
 
-class Drone extends Vehicle{
-
-}
-
 class Car extends Vehicle{
-    constructor(){
-        super();
-        this.gspEnabled = false;
+    start(){
+        super.start();  //this use it use both start methods
+        console.log('starting car...')
+    }
+    static getCompanyName(){
+        super.getCompanyName();     //this runs the parent static method as well.
+        console.log('Local Desi Company....')
     }
 }
 
 let c = new Car();
-
-console.log(c.gspEnabled);
+c.start();
+Car.getCompanyName();   //Derived classes can inherit static methods & override parent class static methods
+c.getCompanyName();     //Error
