@@ -1,7 +1,9 @@
 //inheritance
 
 class Vehicle{
-
+    constructor(){
+        console.log('constructing vehicle')
+    }
 }
 
 class Drone extends Vehicle{
@@ -9,7 +11,10 @@ class Drone extends Vehicle{
 }
 
 class Car extends Vehicle{
-
+    constructor(){
+        super();
+        console.log('car constructor');
+    }
 }
 
 let c = new Car();
