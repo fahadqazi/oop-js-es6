@@ -1,8 +1,9 @@
 //inheritance
-
+// this way you have license property available on the class
+// i.e. every vehicle has a license Number
 class Vehicle{
-    constructor(){
-        console.log('constructing vehicle')
+    constructor(licenseNumber){
+        this.licenseNumber = licenseNumber;
     }
 }
 
@@ -11,14 +12,9 @@ class Drone extends Vehicle{
 }
 
 class Car extends Vehicle{
-    constructor(){
-        super();
-        console.log('car constructor');
+    constructor(licenseNumber){
+        super(licenseNumber);
     }
 }
 
-let c = new Car();
-
-console.log(c instanceof Car);
-console.log(c instanceof Vehicle);
-console.log(c instanceof Object);
+let c = new Car('a123');
