@@ -1,18 +1,19 @@
-class Drone{
-    constructor(id){
-        this._id = id
-    }
+//inheritance
 
-    get id(){
-        return this._id;
-    }
+class Vehicle{
 
-    set id(value){
-        this._id = value;
-    }
 }
 
-let drone1 = new Drone('123');
-console.log(drone1.id);
-drone1.id = '456';
-console.log(drone1.id);
+class Drone extends Vehicle{
+
+}
+
+class Car extends Vehicle{
+
+}
+
+let c = new Car();
+
+console.log(c instanceof Car);
+console.log(c instanceof Vehicle);
+console.log(c instanceof Object);
