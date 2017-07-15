@@ -1,8 +1,5 @@
 import {Car} from './classes/car.js';
 import {Drone} from './classes/drone.js';
+import {fleet} from './fleet-data.js';
 
-let c = new Car();
-let d = new Drone();
-
-console.log(typeof c);
-console.log(typeof d);
+console.log(fleet);
