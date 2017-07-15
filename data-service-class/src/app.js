@@ -7,3 +7,7 @@ let dataService = new FleetDataService();
 dataService.loadData(fleet);
 
 console.log(dataService);
+
+for (let car of dataService.cars){
+    console.log(car.license); 
+}
