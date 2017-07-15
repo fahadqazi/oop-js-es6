@@ -1,7 +1,7 @@
 export let fleet = [
     {
         license: 'ABC123',
-        type: 'ddrone',
+        type: 'drone',
         model: 'Amazon 1250',
         airTimeHours: '6050',
         base: 'New York',

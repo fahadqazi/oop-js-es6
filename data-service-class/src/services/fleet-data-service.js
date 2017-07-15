@@ -19,13 +19,29 @@ export class FleetDataService {
         for (let data of fleet) {
             switch (data.type) {
                 case 'car':
-                    let car = this.loadCar(data)
-                    this.cars.push(car);
+                    if (this.validateCarData(data)){
+                        let car = this.loadCar(data)
+                        if (car){
+                            this.cars.push(car);
+                        }
+                    } else {
+                        let e = new DataError('invalid car data', data);
+                        this.errors.push(e);
+                    }
                     break;
+
                 case 'drone':
-                    let drone = this.loadDrone(data);
-                    this.drones.push(drone);
+                    if (this.validateDroneData(data)) {
+                        let drone = this.loadDrone(data);
+                        if (drone){
+                            this.drones.push(drone);
+                        }
+                    } else {
+                        let e = new DataError('invalid drone data', data);
+                        this.errors.push(e);
+                    }
                     break;
+
                 default:
                     let e = new DataError('Invalid data type', data);
                     this.errors.push(e);
@@ -56,5 +72,33 @@ export class FleetDataService {
             this.errors.push(new DataError('error loading drone', drone))
         }
         return null;
+    }
+
+    validateCarData(car){
+        let requiredProps = 'license model latLong miles make'.split(' ');
+        let hasErrors = false;
+        for (let field of requiredProps){
+            if(!car[field]){
+                this.errors.push(new DataError(`invalid car field ${field}`, car));
+                hasErrors = true;
+            }
+        }
+        if(Number.isNaN(Number.parseFloat(car.miles))){
+            this.errors.push(new DataError('invalid car mileage', car));
+            hasErrors = true;
+        }
+        return !hasErrors;
+    }
+
+    validateDroneData(drone){
+        let requiredProps = 'license model latLong base type'.split(' ');
+        let hasErrors = false;
+        for (let field of requiredProps){
+            if(!drone[field]){
+                this.errors.push(new DataError(`invalid drone field ${field}`, drone));
+                hasErrors = true;
+            }
+        }
+        return !hasErrors;
     }
 }
