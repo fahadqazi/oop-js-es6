@@ -1,18 +1,8 @@
-class Drone{
-    constructor(id){
-        this._id = id
-    }
+import {Car} from './classes/car.js';
+import {Drone} from './classes/drone.js';
 
-    get id(){
-        return this._id;
-    }
+let c = new Car();
+let d = new Drone();
 
-    set id(value){
-        this._id = value;
-    }
-}
-
-let drone1 = new Drone('123');
-console.log(drone1.id);
-drone1.id = '456';
-console.log(drone1.id);
+console.log(c);
+console.log(d);
