@@ -11,3 +11,8 @@ console.log(dataService);
 for (let car of dataService.cars){
     console.log(car.license); 
 }
+
+// this works if fleet-data.js is modified
+for (let errors of dataService.errors){
+    console.log(errors.message);
+}
