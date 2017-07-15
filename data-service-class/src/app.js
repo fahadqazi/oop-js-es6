@@ -16,3 +16,16 @@ for (let car of dataService.cars){
 for (let errors of dataService.errors){
     console.log(errors.message);
 }
+
+let car = dataService.getCarByLicense('AT9900');
+console.log('Found the car: ', car);
+
+let cars = dataService.getCarsSortedByLicense();
+for (let car of cars){
+    console.log(car.license);
+}
+
+let filteredCars = dataService.filterCarsByMake('U');
+for (let car of filteredCars){
+    console.log(car.make);
+}
